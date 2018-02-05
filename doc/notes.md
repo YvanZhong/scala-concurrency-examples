@@ -111,6 +111,34 @@ CAS是无锁程序中的基础材料。等价于synchronized，但是更高效�
        
 线程应该在获取不到锁的时候做其他有意义的操作。
 
+AtomicReference的compareAndSet方法通过比较对象的引用判断是否相等。
+
+ABA问题：两次读取的值相同，但是这段时间内可能发生过变化。
+
+处理ABA问题的指导原则：4条
+
+lazy value和单例对象都是通过双重检查锁定实现的。
+
+惰性值的循环依赖在顺序程序中会导致堆栈溢出，在并发程序中导致死锁。
+
+应该使用专用的私有对象实现同步化。
+
+除非要使传统的java并发实用组件带有Scala语言风格，否则没有必要重新开发已经存在的组件。
+
+并发集合的难点：遍历和修改操作不能同时执行。
+
+scala TrieMap基于Ctire数据结构。调用iterator时，会以原子的方式获取集合中所有元素的快照。
+
+#4
+
+Asynchronous programming refers to
+the programming style in which executions occur independently of the main program flow.
+Asynchronous programming helps you to eliminate blocking instead of suspending the
+thread whenever a resource is not available; a separate computation is scheduled to
+proceed once the resource becomes available.
+
+Future & Promise
+
 
 
 

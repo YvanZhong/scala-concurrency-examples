@@ -11,7 +11,25 @@ object Three {
     executor.execute(new Runnable {
       def run() = println("This task is run asynchronously.")
     })
+    List()
+    new Thread()
+    val a = executor.##
     Thread.sleep(500)
   }
 
+}
+
+object FuturesNonFatal extends App {
+  import scala.concurrent._
+  import ExecutionContext.Implicits.global
+
+  val a = throw new InterruptedException
+  val a1 = {}
+  val f = Future { throw new InterruptedException }
+  val g = Future { throw new IllegalArgumentException }
+  val b = f.flatten
+  f.failed foreach { t => println(s"error - $t") }
+  g.failed foreach { t => println(s"error - $t") }
+
+  Thread.sleep(1000)
 }
