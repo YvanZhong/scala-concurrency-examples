@@ -139,7 +139,31 @@ proceed once the resource becomes available.
 
 Future & Promise
 
+Thread.sleep()和Timer区别？
 
+#7
+
+ScalaSTM
+
+如果需要同时修改多个原子变量，必须用事务的方式才能保证可线性化。
+
+#8
+
+Actor
+
+Futures
+and promises, concurrent data structures, and software transactional memory, are best
+suited to shared-memory systems. While the shared-memory assumption ensures that
+these facilities are efficient, it also limits them to applications running on a single computer.
+In this chapter, we consider a programming model that is equally applicable to a sharedmemory
+machine or a distributed system, namely, the actor model.
+
+之前的并发编程抽象都是共享内存系统，actor适用于共享内存系统和分布式系统。
+
+The actor model aims to resolve issues associated with using shared memory, such as data
+races or synchronization, by eliminating the need for shared memory altogether.
+
+看actor论文
 
 
 

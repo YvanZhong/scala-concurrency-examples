@@ -1,5 +1,7 @@
 package org.learningconcurrency
 
+import java.util.Timer
+
 import scala.concurrent._
 import java.util.concurrent.ForkJoinPool
 
@@ -27,9 +29,12 @@ object FuturesNonFatal extends App {
   val a1 = {}
   val f = Future { throw new InterruptedException }
   val g = Future { throw new IllegalArgumentException }
+  val p = Promise[String]
   val b = f.flatten
   f.failed foreach { t => println(s"error - $t") }
   g.failed foreach { t => println(s"error - $t") }
+
+  val timer = new Timer(true)
 
   Thread.sleep(1000)
 }
